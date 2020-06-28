@@ -86,6 +86,8 @@ class ImportTransactionsService {
 
     await transactionsRepository.save(createdTransactions);
 
+    await fs.promises.unlink(csvFilePath);
+
     return createdTransactions;
   }
 }

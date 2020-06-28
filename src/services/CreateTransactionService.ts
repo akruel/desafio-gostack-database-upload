@@ -24,9 +24,9 @@ class CreateTransactionService {
     const createCategory = new CreateCategoryService();
     let category_id: string;
 
-    const balance = await transactionsRepository.getBalance();
+    const { total } = await transactionsRepository.getBalance();
 
-    if (type === 'outcome' && balance.total < value) {
+    if (type === 'outcome' && total < value) {
       throw new AppError('Insufficient funds.', 400);
     }
 

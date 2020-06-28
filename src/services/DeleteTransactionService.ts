@@ -7,9 +7,7 @@ import TransactionsRepository from '../repositories/TransactionsRepository';
 class DeleteTransactionService {
   public async execute(id: string): Promise<void> {
     const transactionsRepository = getCustomRepository(TransactionsRepository);
-    const findTransaction = await transactionsRepository.findOne({
-      where: { id },
-    });
+    const findTransaction = await transactionsRepository.findOne(id);
 
     if (findTransaction) {
       await transactionsRepository.remove(findTransaction);
